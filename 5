@@ -1,0 +1,24 @@
+var calledMethod = ;
+while (calledMethod != null)
+{
+    var ss =
+        "caller is \nBEGIN\n\n" +
+        calledMethod +
+        "\nArguments = ";
+
+    for (var i = 0; calledMethod.arguments.length > i; i++) {
+        if (typeof (calledMethod.arguments[i]) == "object") {
+            result = Object.keys(calledMethod.arguments[i]).map(function (key) {
+                return key + ": " + calledMethod.arguments[i][key] + "\n";
+            });
+            ss += i + ") " + result + "\n";
+        }
+        else {
+            ss += i + ") " + calledMethod.arguments[i] + "\n";
+        }
+    }
+
+    ss += "\n\nEND\n\n\n\n";
+    console.log(ss);
+    calledMethod = calledMethod.caller;
+}
